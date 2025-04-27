@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Seats - Hop On Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="seat-selection">
+        <h2>Select Your Seats</h2>
+        <p id="busInfo"></p>
+
+        <!-- Seat Layout -->
+        <div class="seats-container" id="seatsContainer"></div>
+
+        <h3>Selected Seats: <span id="selectedSeats">None</span></h3>
+        <h3>Total Price: ₹<span id="totalPrice">0</span></h3>
+
+        <button id="proceedButton" disabled>Proceed to Booking</button>
+    </section>
+
+    <script>
+        let bus = JSON.parse(localStorage.getItem("selectedBus"));
+
+        document.getElementById("busInfo").innerText = `Bus: ${bus.name} | Price per seat: ₹${bus.price}`;
+
+        const seatsContainer = document.getElementById("seatsContainer");
+        let selectedSeats = [];
+        let totalPrice = 0;
+
+        // Create 40 seats dynamically
+        for (let i = 1; i <= 40; i++) {
+            let seat = document.createElement("div");
+            seat.classList.add("seat");
+            seat.innerText = i;
+            seat.onclick = function () { toggleSeat(i, seat); };
+            seatsContainer.appendChild(seat);
+        }
+
+        function toggleSeat(seatNumber, seatElement) {
+            if (selectedSeats.includes(seatNumber)) {
+                selectedSeats = selectedSeats.filter(s => s !== seatNumber);
+                seatElement.classList.remove("selected");
+            } else {
+                selectedSeats.push(seatNumber);
+                seatElement.classList.add("selected");
+            }
+
+            totalPrice = selectedSeats.length * bus.price;
+            document.getElementById("selectedSeats").innerText = selectedSeats.length ? selectedSeats.join(", ") : "None";
+            document.getElementById("totalPrice").innerText = totalPrice;
+
+            document.getElementById("proceedButton").disabled = selectedSeats.length === 0;
+        }
+
+        document.getElementById("proceedButton").addEventListener("click", function () {
+            localStorage.setItem("selectedSeats", JSON.stringify(selectedSeats));
+            localStorage.setItem("totalPrice", totalPrice);
+            window.location.href = "booking.html";
+        });
+    </script>
+</body>
+</html>

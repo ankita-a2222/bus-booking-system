@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Seats - Hop On Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="seat-selection">
+        <h2>Select Your Seats</h2>
+        <p id="busInfo"></p>
+
+        <!-- Seat Layout -->
+        <div class="seats-container" id="seatsContainer"></div>
+
+        <h3>Selected Seats: <span id="selectedSeats">None</span></h3>
+        <h3>Total Price: ₹<span id="totalPrice">0</span></h3>
+
+        <button id="proceedButton" disabled>Proceed to Booking</button>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - Hop On Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="confirmation">
+        <h2>🎉 Booking Successful! 🎉</h2>
+        <p>Your ticket has been confirmed. Check your details below:</p>
+
+        <div id="ticketDetails"></div>
+
+        <button id="downloadTicket">Download Ticket</button>
+        <a href="index.html" class="home-btn">Back to Home</a>
+    </section>
+
+    <script>
+        let passenger = JSON.parse(localStorage.getItem("passengerDetails"));
+        let selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+        let totalPrice = localStorage.getItem("totalPrice");
+
+        document.getElementById("ticketDetails").innerHTML = `
+            <p><strong>Name:</strong> ${passenger.name}</p>
+            <p><strong>Email:</strong> ${passenger.email}</p>
+            <p><strong>Phone:</strong> ${passenger.phone}</p>
+            <p><strong>Seats:</strong> ${selectedSeats.join(", ")}</p>
+            <p><strong>Total Amount Paid:</strong> ₹${totalPrice}</p>
+        `;
+
+        document.getElementById("downloadTicket").addEventListener("click", function() {
+            let ticketContent = document.getElementById("ticketDetails").innerHTML;
+            let ticketBlob = new Blob([ticketContent], { type: "text/plain" });
+            let ticketURL = URL.createObjectURL(ticketBlob);
+            let a = document.createElement("a");
+            a.href = ticketURL;
+            a.download = "Bus_Ticket.txt";
+            a.click();
+        });
+    </script>
+</body>
+</html>

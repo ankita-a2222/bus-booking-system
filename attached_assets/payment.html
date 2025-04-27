@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Hop On Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="payment">
+        <h2>Payment Details</h2>
+        <p id="paymentInfo"></p>
+
+        <!-- Payment Options -->
+        <form id="paymentForm">
+            <label>Choose Payment Method:</label>
+            <select id="paymentMethod">
+                <option value="card">Credit/Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="netbanking">Net Banking</option>
+            </select>
+
+            <!-- Card Payment Fields -->
+            <div id="cardDetails">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" pattern="[0-9]{16}" required>
+
+                <label for="expiry">Expiry Date:</label>
+                <input type="month" id="expiry" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="password" id="cvv" pattern="[0-9]{3}" required>
+            </div>
+
+            <button type="submit">Confirm Payment</button>
+        </form>
+    </section>
+
+    <script>
+        let totalPrice = localStorage.getItem("totalPrice");
+        let passenger = JSON.parse(localStorage.getItem("passengerDetails"));
+
+        document.getElementById("paymentInfo").innerText = `Passenger: ${passenger.name} | Total Amount: ₹${totalPrice}`;
+
+        document.getElementById("paymentMethod").addEventListener("change", function() {
+            let method = this.value;
+            document.getElementById("cardDetails").style.display = (method === "card") ? "block" : "none";
+        });
+
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Payment Successful!");
+            window.location.href = "confirmation.html";
+        });
+    </script>
+</body>
+</html>

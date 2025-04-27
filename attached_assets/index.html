@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hop On Hub - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font-awesome for icons -->
+    <script src="https://kit.fontawesome.com/d8cfbe84b9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Find Your Bus, Book Your Seat</h1>
+            <p>Skip the queue, catch the view!</p>
+        </div>
+    </header>
+
+    <!-- Search Form -->
+    <section class="search-container">
+        <h2>Book Your Journey</h2>
+        <form id="searchForm">
+            <input type="text" id="from" placeholder="From" required>
+            <input type="text" id="to" placeholder="To" required>
+            <input type="date" id="date" required>
+            <button type="submit">Search Buses</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let from = document.getElementById("from").value;
+            let to = document.getElementById("to").value;
+            let date = document.getElementById("date").value;
+
+            // Store search details
+            localStorage.setItem("from", from);
+            localStorage.setItem("to", to);
+            localStorage.setItem("date", date);
+
+            // Redirect to search results
+            window.location.href = "search.html";
+        });
+    </script>
+</body>
+</html>

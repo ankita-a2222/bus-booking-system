@@ -1,0 +1,185 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hop On Hub - Bus Ticket Bookings</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Font-awesome -->
+    <script src="https://kit.fontawesome.com/d8cfbe84b9.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #FFF7D6;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1, h2, h3, h4, p, a {
+            font-weight: 700;
+            color: #D84315;
+        }
+
+        .btn-danger {
+            background-color: #D84315;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #B71C1C;
+        }
+
+        header {
+            background: url('https://images.unsplash.com/photo-1598300035497-9a715a56a0f1') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .logo-bus {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+            animation: moveLogoStep 1.5s linear infinite;
+            position: relative;
+        }
+
+        @keyframes moveLogoStep {
+            0% { left: 0; }
+            100% { left: 20px; }
+        }
+
+        .btn-book {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            background-color: #D84315;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-book:hover {
+            background-color: #B71C1C;
+            color: #fff;
+        }
+
+        section {
+            padding: 80px 0;
+            background: #FFFBEB;
+        }
+
+        .bg-dark {
+            background: #343a40 !important;
+        }
+
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a href="#" class="navbar-brand">
+            <img src="https://cdn-icons-png.flaticon.com/128/1068/1068631.png" alt="Hope On Hub Logo" class="logo-bus">
+            Hop On Hub
+        </a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        </ul>
+        <a href="#" class="btn btn-primary">Login</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header id="home">
+    <div class="container">
+        <h1>HOP ON HUB - Ride Far, Book Easy!</h1>
+        <p>Skip the Queue, Catch the View!</p>
+        <a href="index.html" class="btn-book">Book Now</a>
+        <br>
+        <a href="#about" class="btn btn-danger mt-3">Explore More</a>
+    </div>
+</header>
+
+<!-- Info Section -->
+<section id="info-num" class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://cdn-icons-png.flaticon.com/128/2055/2055340.png" alt="Route" width="120">
+                <h4>50 Routes</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="https://cdn-icons-png.flaticon.com/128/6395/6395324.png" alt="Bus" width="120" class="bus">
+                <h4>30 Buses</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="https://cdn-icons-png.flaticon.com/128/10401/10401495.png" alt="Customer" width="120">
+                <h4>200 Happy Customers</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="https://cdn-icons-png.flaticon.com/128/1841/1841601.png" alt="Ticket" width="120">
+                <h4>Instant Tickets</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="text-center">
+    <div class="container">
+        <h1>About Us</h1>
+        <p>HOP ON HUB makes your bus travel seamless and convenient. Whether you're commuting daily or planning a weekend getaway, we’ve got you covered! Our platform offers real-time updates and instant ticket generation.</p>
+        <img src="https://cdn-icons-png.flaticon.com/128/15253/15253862.png" alt="Bus Travel" class="img-fluid rounded mt-4" style="max-width: 100%; height: auto;">
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p>&copy; Hop On Hub | Ride Far, Book Easy!</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

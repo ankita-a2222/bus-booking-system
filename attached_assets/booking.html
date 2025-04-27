@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Details - Hop On Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="booking">
+        <h2>Enter Passenger Details</h2>
+        <p id="bookingInfo"></p>
+
+        <form id="passengerForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" min="1" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" pattern="[0-9]{10}" required>
+
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </section>
+
+    <script>
+        let selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
+        let totalPrice = localStorage.getItem("totalPrice");
+
+        document.getElementById("bookingInfo").innerText = `Seats: ${selectedSeats.join(", ")} | Total Price: ₹${totalPrice}`;
+
+        document.getElementById("passengerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let passengerDetails = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value
+            };
+
+            localStorage.setItem("passengerDetails", JSON.stringify(passengerDetails));
+            window.location.href = "payment.html";
+        });
+    </script>
+</body>
+</html>

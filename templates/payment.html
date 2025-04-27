@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Hop On Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="payment">
+        <h2>Payment Details</h2>
+        <div class="alert alert-success">
+            <strong>Payment Pre-Approved!</strong> Click "Confirm Payment" to complete your booking.
+        </div>
+        <p id="paymentInfo"></p>
+
+        <!-- Payment Options -->
+        <form id="paymentForm">
+            <label>Choose Payment Method:</label>
+            <select id="paymentMethod">
+                <option value="card">Credit/Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="netbanking">Net Banking</option>
+            </select>
+
+            <!-- Auto-filled Card Payment Fields -->
+            <div id="cardDetails">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" value="4111 1111 1111 1111" readonly>
+
+                <label for="expiry">Expiry Date:</label>
+                <input type="text" id="expiry" value="12/2028" readonly>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" value="***" readonly>
+            </div>
+
+            <button type="submit" class="btn-primary">Confirm Payment</button>
+        </form>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

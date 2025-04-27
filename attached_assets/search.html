@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Hop On Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>Hop On Hub</h1>
+        </div>
+    </nav>
+
+    <section class="search-results">
+        <h2>Available Buses</h2>
+        <p id="route"></p>
+
+        <div id="busList"></div>
+    </section>
+
+    <script>
+        // Fetch stored search data
+        let from = localStorage.getItem("from");
+        let to = localStorage.getItem("to");
+        let date = localStorage.getItem("date");
+
+        document.getElementById("route").innerText = `Showing buses from ${from} to ${to} on ${date}`;
+
+        // Dummy bus data
+        const buses = [
+            { id: 1, name: "Orange Travels", price: 500, time: "8:00 AM" },
+            { id: 2, name: "Red Bus Express", price: 650, time: "10:00 AM" },
+            { id: 3, name: "Green Line", price: 700, time: "2:00 PM" }
+        ];
+
+        const busListDiv = document.getElementById("busList");
+
+        // Display bus details
+        buses.forEach(bus => {
+            let busItem = document.createElement("div");
+            busItem.classList.add("bus-item");
+            busItem.innerHTML = `
+                <h3>${bus.name}</h3>
+                <p>Time: ${bus.time}</p>
+                <p>Price: ₹${bus.price}</p>
+                <button onclick="selectBus(${bus.id}, '${bus.name}', ${bus.price})">Select Seats</button>
+            `;
+            busListDiv.appendChild(busItem);
+        });
+
+        function selectBus(id, name, price) {
+            localStorage.setItem("selectedBus", JSON.stringify({ id, name, price }));
+            window.location.href = "seats.html";
+        }
+    </script>
+</body>
+</html>
